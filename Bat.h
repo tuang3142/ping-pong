@@ -6,13 +6,8 @@ private:
     sf::Vector2f position;
     sf::RectangleShape shape;
     float speed = 1000;
-    // float acc;
     bool movingUp = false;
     bool movingDown = false;
-    // todo: bat only move if match string command
-    // todo: make sure x is locked
-    // todo: score for a bat
-    // todo: moving with accerleration
 
 public:
     Bat(float startX, float startY);
@@ -24,8 +19,6 @@ public:
     void stopDown();
     void update(sf::Time dt);
 };
-
-//#include "bat.h"
 
 Bat::Bat(float startX, float startY) {
     position.x = startX;
