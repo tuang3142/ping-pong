@@ -58,7 +58,7 @@ int main() {
             score2 += 1;
         }
         if (ball.getPosition().left + ball.getPosition().width > window.getSize().x) {
-            ball.setPosition(windowWidth / 2, windowHeight / 2);
+            ball.reset(windowWidth / 2, windowHeight / 2);
             score1 += 1;
         }
         if (ball.getPosition().intersects(bat1.getPosition())) {

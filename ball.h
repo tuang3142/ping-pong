@@ -5,8 +5,7 @@ class Ball {
 private:
     sf::Vector2f position;
     sf::RectangleShape shape;
-    sf::Window window;
-    const float defaultSpeed = 1000.0f;
+    const float defaultSpeed = 2000.0f;
     float speed = defaultSpeed;
     float directionX = .2f;
     float directionY = .2f;
@@ -57,12 +56,14 @@ void Ball::update(sf::Time dt) {
 }
 
 void Ball::speedUp() {
-    speed *= 1.1;
+    speed *= 1.05;
 }
 
 void Ball::reset(float x, float y) {
     position.x = x;
     position.y = y;
     speed = defaultSpeed;
-
+    float dir[] = {1.0, -1.0};
+    directionX *= dir[int(rand() % 2)];
+    directionY *= dir[int(rand() % 2)];
 }
