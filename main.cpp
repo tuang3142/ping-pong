@@ -59,6 +59,10 @@ int main() {
         if (ball.getPosition().top < 0 || ball.getPosition().top > window.getSize().y) {
             ball.bounceTopOrBot();
         }
+        if (ball.getPosition().intersects(bat1.getPosition()) || ball.getPosition().intersects(bat2.getPosition())) {
+            ball.reboundSides();
+            ball.speedUp();
+        }
         if (ball.getPosition().left < 0) {
             ball.reset(windowWidth / 2, windowHeight / 2);
             score2 += 1;
@@ -66,11 +70,6 @@ int main() {
         if (ball.getPosition().left + ball.getPosition().width > window.getSize().x) {
             ball.reset(windowWidth / 2, windowHeight / 2);
             score1 += 1;
-        }
-        if (ball.getPosition().intersects(bat1.getPosition())) {
-            // Hit detected so reverse the ball and score a point
-            ball.reboundSides();
-            ball.speedUp();
         }
 
         std::stringstream ss;
