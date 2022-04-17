@@ -5,7 +5,7 @@ class Ball {
 private:
     sf::Vector2f position;
     sf::RectangleShape shape;
-    const float defaultSpeed = 2000.0f;
+    const float defaultSpeed = 1500.0f;
     float speed = defaultSpeed;
     float directionX = .2f;
     float directionY = .2f;
@@ -15,8 +15,7 @@ public:
     sf::FloatRect getPosition();
     sf::RectangleShape getShape();
     void reboundSides();
-    void reboundBatOrTop();
-    void reboundBottom();
+    void bounceTopOrBot();
     void update(sf::Time dt);
     void speedUp();
     void reset(float x, float y);
@@ -41,11 +40,7 @@ void Ball::reboundSides() {
     directionX = -directionX;
 }
 
-void Ball::reboundBatOrTop() {
-    directionY = -directionY;
-}
-
-void Ball::reboundBottom() {
+void Ball::bounceTopOrBot() {
     directionY = -directionY;
 }
 
@@ -56,7 +51,7 @@ void Ball::update(sf::Time dt) {
 }
 
 void Ball::speedUp() {
-    speed *= 1.05;
+    speed *= 1.1;
 }
 
 void Ball::reset(float x, float y) {

@@ -40,10 +40,15 @@ int main() {
         }
         (!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || bat1.getPosition().top < 0)
             ? bat1.stopUp() : bat1.moveUp();
-        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || bat1.getPosition().top + bat1.getPosition().height > window.getSize().y)
+        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Down)
+        || bat1.getPosition().top + bat1.getPosition().height > window.getSize().y)
             ? bat1.stopDown(): bat1.moveDown();
-        sf::Keyboard::isKeyPressed(sf::Keyboard::W) ? bat2.moveUp() : bat2.stopUp();
-        sf::Keyboard::isKeyPressed(sf::Keyboard::S) ? bat2.moveDown(): bat2.stopDown();
+
+        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || bat2.getPosition().top < 0)
+            ? bat2.stopUp() : bat2.moveUp();
+        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Right)
+        || bat2.getPosition().top + bat2.getPosition().height > window.getSize().y)
+            ? bat2.stopDown(): bat2.moveDown();
 
         // update object state
         sf::Time dt = clock.restart();
@@ -51,8 +56,9 @@ int main() {
         bat2.update(dt);
         ball.update(dt);
 
-        if (ball.getPosition().top > window.getSize().y) ball.reboundBottom();
-        if (ball.getPosition().top < 0) ball.reboundBatOrTop();
+        if (ball.getPosition().top < 0 || ball.getPosition().top > window.getSize().y) {
+            ball.bounceTopOrBot();
+        }
         if (ball.getPosition().left < 0) {
             ball.reset(windowWidth / 2, windowHeight / 2);
             score2 += 1;
