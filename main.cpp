@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "bat.h"
 #include "ball.h"
 #include <sstream>
@@ -24,6 +25,16 @@ int main() {
     hud.setFillColor(sf::Color::White);
     hud.setPosition(windowWidth / 2 - 55 , 10);
 
+    sf::SoundBuffer clackBuffer;
+    clackBuffer.loadFromFile("../assets/sounds/tick.wav");
+    sf::Sound clack;
+    clack.setBuffer(clackBuffer);
+
+    sf::SoundBuffer scoreBuffer;
+    scoreBuffer.loadFromFile("../assets/sounds/nope.wav");
+    sf::Sound score;
+    score.setBuffer(scoreBuffer);
+
     sf::Clock clock;
 
     // game loop
@@ -38,6 +49,7 @@ int main() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
             window.close();
         }
+
         (!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || bat1.getPosition().top < 0)
             ? bat1.stopUp() : bat1.moveUp();
         (!sf::Keyboard::isKeyPressed(sf::Keyboard::Down)
@@ -56,20 +68,25 @@ int main() {
         bat2.update(dt);
         ball.update(dt);
 
+        // handle collision
         if (ball.getPosition().top < 0 || ball.getPosition().top > window.getSize().y) {
             ball.bounceTopOrBot();
+            clack.play();
         }
         if (ball.getPosition().intersects(bat1.getPosition()) || ball.getPosition().intersects(bat2.getPosition())) {
             ball.reboundSides();
             ball.speedUp();
+            clack.play();
         }
         if (ball.getPosition().left < 0) {
             ball.reset(windowWidth / 2, windowHeight / 2);
             score2 += 1;
+            score.play();
         }
         if (ball.getPosition().left + ball.getPosition().width > window.getSize().x) {
             ball.reset(windowWidth / 2, windowHeight / 2);
             score1 += 1;
+            score.play();
         }
 
         std::stringstream ss;
