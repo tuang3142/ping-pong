@@ -12,7 +12,7 @@ int main() {
 
     // init objects
     Bat bat1(100, 100, sf::Keyboard::Up, sf::Keyboard::Down);
-    Bat bat2(windowWidth - 100, windowHeight - 100, sf::Keyboard::Left, sf::Keyboard::Right);
+    Bat bat2(windowWidth - 100, windowHeight - 100, sf::Keyboard::W, sf::Keyboard::S);
     Ball ball(600, 600);
     int score1 = 0;
     int score2 = 0;

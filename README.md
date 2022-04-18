@@ -6,25 +6,17 @@ The classic ping pong game with a catch: the ball gets faster after every bounce
 
 ## Dependencies
 
-SFML library
+SFML library.
 
-ubuntu
+linux
 ```
 sudo apt-get install libsfml-dev
 ```
-macOs
-```
-brew install sfml
-```
 
-### Build
+### Build (_linux only_)
 
-If you already have Clion, open the project with it and run. Otherwise, you would have to build it manually as follows.
 
-- Download the entire project (including the assets)
-- `cd` to the project directory
-- Now let's compile and build it:
-
+If you already have Clion, open the project with it and run with cmake. Otherwise, `cd` to the project directory and run:
 ```
 g++ -c main.cpp
 g++ main.o -o pingpong -lsfml-graphics -lsfml-window -lsfml-system
