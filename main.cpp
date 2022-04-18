@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "bat.h"
-#include "ball.h"
+#include "Bat.h"
+#include "Ball.h"
 #include <sstream>
 
 int main() {
