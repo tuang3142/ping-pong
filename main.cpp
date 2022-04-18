@@ -11,8 +11,8 @@ int main() {
     sf::RenderWindow window(vm, "pong");
 
     // init objects
-    Bat bat1(100, 100);
-    Bat bat2(windowWidth - 100, windowHeight - 100);
+    Bat bat1(100, 100, sf::Keyboard::Up, sf::Keyboard::Down);
+    Bat bat2(windowWidth - 100, windowHeight - 100, sf::Keyboard::Left, sf::Keyboard::Right);
     Ball ball(600, 600);
     int score1 = 0;
     int score2 = 0;
@@ -50,15 +50,15 @@ int main() {
             window.close();
         }
 
-        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || bat1.getPosition().top < 0)
+        (!sf::Keyboard::isKeyPressed(bat1.getKeyUp()) || bat1.getPosition().top < 0)
             ? bat1.stopUp() : bat1.moveUp();
-        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Down)
+        (!sf::Keyboard::isKeyPressed(bat1.getKeyDown())
         || bat1.getPosition().top + bat1.getPosition().height > window.getSize().y)
             ? bat1.stopDown(): bat1.moveDown();
 
-        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || bat2.getPosition().top < 0)
+        (!sf::Keyboard::isKeyPressed(bat2.getKeyUp()) || bat2.getPosition().top < 0)
             ? bat2.stopUp() : bat2.moveUp();
-        (!sf::Keyboard::isKeyPressed(sf::Keyboard::Right)
+        (!sf::Keyboard::isKeyPressed(bat2.getKeyDown())
         || bat2.getPosition().top + bat2.getPosition().height > window.getSize().y)
             ? bat2.stopDown(): bat2.moveDown();
 
