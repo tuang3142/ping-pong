@@ -1,6 +1,6 @@
 # (almost) Pong
 
-![game screen shot](assets/images/gameplay.png)
+![game screen shot](assets/images/gameplay.gif)
 
 The classic ping pong game with a catch: the ball gets faster after every bounce. Be quick!
 
