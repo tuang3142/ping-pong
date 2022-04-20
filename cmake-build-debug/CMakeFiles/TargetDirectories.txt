@@ -1,3 +1,0 @@
-/Users/tuang/CLionProjects/pingpong/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/tuang/CLionProjects/pingpong/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/tuang/CLionProjects/pingpong/cmake-build-debug/CMakeFiles/pingpong.dir

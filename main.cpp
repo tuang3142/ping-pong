@@ -12,26 +12,26 @@ int main() {
 
     // init objects
     Bat bat1(100, 100, sf::Keyboard::Up, sf::Keyboard::Down);
-    Bat bat2(windowWidth - 100, windowHeight - 100, sf::Keyboard::W, sf::Keyboard::S);
+    Bat bat2(windowWidth - 100, windowHeight - 100, sf::Keyboard::Left, sf::Keyboard::Right);
     Ball ball(600, 600);
     int score1 = 0;
     int score2 = 0;
 
     sf::Text hud;
     sf::Font font;
-    font.loadFromFile("../assets/fonts/JetBrainsMono-Bold.ttf");
+    font.loadFromFile("assets/fonts/JetBrainsMono-Bold.ttf");
     hud.setFont(font);
     hud.setCharacterSize(60);
     hud.setFillColor(sf::Color::White);
     hud.setPosition(windowWidth / 2 - 55 , 10);
 
     sf::SoundBuffer clackBuffer;
-    clackBuffer.loadFromFile("../assets/sounds/tick.wav");
+    clackBuffer.loadFromFile("assets/sounds/tick.wav");
     sf::Sound clack;
     clack.setBuffer(clackBuffer);
 
     sf::SoundBuffer scoreBuffer;
-    scoreBuffer.loadFromFile("../assets/sounds/nope.wav");
+    scoreBuffer.loadFromFile("assets/sounds/nope.wav");
     sf::Sound score;
     score.setBuffer(scoreBuffer);
 
